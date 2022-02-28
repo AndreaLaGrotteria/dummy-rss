@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      RSS Reader
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,12 +9,34 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">RSS Reader</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-grid>
+    <ion-row *ngFor="let art of res; let i = index">
+      <ion-card>
+        
+        <ion-card-header (click)="toggleSection(i)"><ion-card-title>{{art["title"][0]}}</ion-card-title></ion-card-header>
+        <ion-card-content *ngIf="clicked[i]" style="font-size: x-small;">
+          <span [innerHTML]='art["content"][0]["_"]'></span>
+        </ion-card-content>
+        
+       
+        
+      </ion-card>
+      
+    </ion-row>
+  </ion-grid>
+
+  <!-- 
+  <ion-list>
+    <ion-item *ngFor="let art of res">
+      <ion-label>{{art["title"][0]}}</ion-label>
+      <span [innerHTML]='art["content"][0]["_"]'></span>
+    </ion-item>
+  </ion-list>
+  -->
+  
+
 </ion-content>
